@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.mat-column-Key {
+    border-right: 1px solid currentColor;
+    /* padding-right: 24px; */
+    /* text-align: center; */
+}
