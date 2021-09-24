@@ -1,19 +1,19 @@
-<div class="graph">
+<div class="graph-wrapper">
   <ngx-graph
     class="chart-container"
-    [nodes]="this.testNodes"
-    [links]="this.testEdges"
+    [nodes]="nodes"
+    [links]="edges"
     layout="dagreCluster"
   >
     <ng-template #nodeTemplate let-node>
       <svg:g class="node">
-        <foreignObject [attr.width]="myTable.w" [attr.height]="myTable.h">
-            <label>{{node.label}}</label>
-            <app-my-table [data]="node.data" #myTable></app-my-table>
+        <foreignObject [attr.width]="table.width" [attr.height]="table.height">
+            <label>{{ node.label }}</label>
+            <app-table [data]="node.data" #table></app-table>
         </foreignObject>
       </svg:g>
     </ng-template>
-    
+
     <ng-template #defsTemplate>
       <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
         <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />

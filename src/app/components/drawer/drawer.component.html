@@ -1,0 +1,19 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened class="sidebar">
+      <p class="input-zone__title">Выберите файл</p>
+      <input type="file" (change)="changeListener($event)">
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-tab-group>
+        <mat-tab *ngFor="let tab of tabs"
+          [label]="tab.title"
+          mat-align-tabs="start"
+          animationDuration="0ms"
+        >
+          <ng-template matTabContent>
+            <app-graph [data]="tab.content"></app-graph>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-drawer-content>
+</mat-drawer-container>

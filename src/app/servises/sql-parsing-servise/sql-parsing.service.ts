@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   ALL_TABLE_REGEXP,
   FOREIGN_KEYS_REGEXP,
+  FOREIGN_KEYS_REGEXP_2,
   PRIMARY_KEYS_REGEXP,
   PRIMARY_KEYS_SPLIT_REGEXP,
   ATTRIBUTE_REGEXP,
@@ -17,15 +18,13 @@ import {
   ColumnDescription, 
   TableDescription,
   ForeignKeyDescription
-} from '../app/my-graph/my-graph.component';
+} from '../../model/table.model'; 
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SqlParsingService {
-
-  constructor() { }
 
   public parseDataFromFile(data: string): SchemeDescription {
     const regexp: RegExp = new RegExp(ALL_TABLE_REGEXP, "gi");
@@ -41,7 +40,7 @@ export class SqlParsingService {
   }
 
   public getForeignKey(data: string): ForeignKeyDescription {
-    const regexp: RegExp = new RegExp(FOREIGN_KEYS_REGEXP, "i");
+    const regexp: RegExp = new RegExp(FOREIGN_KEYS_REGEXP_2, "i");
     const [_, currentAttr, targetTable, targetAttr]: RegExpMatchArray = data.match(regexp) ?? [];
     return { currentAttr, targetTable, targetAttr };
   }
@@ -76,7 +75,6 @@ export class SqlParsingService {
             const attr = this.getAttribute(column);
             attrs.push(attr);
 
-            // FK test
             let regexp = /references/gi;
             if (regexp.test(column)) {  
               regexp = /references\s+([\w\d_]+)\(([\w\d_]+)\)/i;

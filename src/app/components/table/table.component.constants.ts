@@ -1,0 +1,4 @@
+export const TABLE_WIDTH_VARIABLE = 101;
+
+export const TABLE_HEIGHT_VARIABLE_1 = 51;
+export const TABLE_HEIGHT_VARIABLE_2 = 70;
